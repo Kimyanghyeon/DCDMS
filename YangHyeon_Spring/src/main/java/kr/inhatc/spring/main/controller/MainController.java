@@ -8,7 +8,7 @@ public class MainController {
 
 	@GetMapping("/")
 	public String main() {
-		return "/layouts/layout1";
+		return "main";
 	}// end of main
 
 }// end of class

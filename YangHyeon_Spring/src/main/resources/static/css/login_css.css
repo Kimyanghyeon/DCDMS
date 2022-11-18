@@ -53,7 +53,8 @@ a:hover {
 }
 
 
-.container {
+.loginContainer{
+	margin-top:100px;
     background: #FFF;
     position: relative;
 }
@@ -190,7 +191,7 @@ a:link, a:active, a:visited {
 }
 
 .btnB:hover, .btnM:hover, .btnS:hover, .btnI:hover {
-    background: #666 url("icon/pattern_12.png");
+    background: #666 url("/icon/pattern_12.png");
 }
 
 .btnC1 {

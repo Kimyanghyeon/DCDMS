@@ -2,18 +2,17 @@
 <html lang="en" 
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}">
+      layout:decorate="~{/layouts/layout1}">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="./css/login_css.css">
 	<title></title>
 </head>
 <body>
-	<div class="login" layout:fragment="content">
-		<div class="container">
+	<div class="login" layout:fragment="content" >
+		<div class="loginContainer" >
 			<div class="page_logo">
-				<img src="img/bul_h1.png" width="20px">
+				<img src="/img/bul_h1.png" width="20px">
 			</div>
 			<div class="page_title">
 				<h1>로그인</h1>
@@ -22,11 +21,11 @@
 				<div id="contentsEditHtml">
 					<input type="hidden" id="siteIdVal" value="cse">
 					<article id="_contentBuilder" class="_contentBuilder _k2__WiZaRd_general">
-						<div class="_obj _objWidget _active" id="menu2224_obj67" style=""> 
+						<div class="_obj _objWidget _active" id="menu2224_obj67"> 
 							
 							<div class="_fnctWrap">
 								<div id="_UlgnS_basic" class="_loginBefore">
-									<form method="post" action="/subLogin/cse/inhatcLogin.do" ">
+									<form method="post" action="/subLogin/cse/inhatcLogin.do" >
 										<div class="_loginInputWrap">
 											<div class="_loginInput">
 												<div class="_inputArea">

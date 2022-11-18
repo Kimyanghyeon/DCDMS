@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<title>Document</title>
+	<link th:href="@{./css/login_css.css}" rel="stylesheet">
+    <link th:href="@{./css/footer_css.css}" rel="stylesheet">
+    <link th:href="@{./css/header_css.css}" rel="stylesheet">
+	<title>Department Capstone Design Management System</title>
 
 	<th:block layout:fragment="script"></th:block>
 	<th:block layout:fragment="css"></th:block>
@@ -18,9 +21,9 @@
 		<div class="container">
 
 			<div class="head_logo">
-				<img src="img/logo_w.png" alt="인하공업전문대학교" class="logo" onclick="goSchoolLink()">
+				<img src="/img/logo_w.png" alt="인하공업전문대학교" class="logo" onclick="goSchoolLink()">
 				<h1 id="departTitle" onclick="goDepartLink()">컴퓨터 시스템과</h1>
-				<script src="./js/header_js.js"></script>
+				<script src="/js/header_js.js"></script>
 			</div>
 
 			<div class="head_navi" id="head_navi">
@@ -29,12 +32,12 @@
 						<div class="top_k2wiz_GNB _wizOdr ul_1 have count6">
 
 							<!-- 로그인 -->
-							<li class="li_login"><a href="/cse/2189/subview.do" id="top_k2wiz_GNB_2183"
-									class="top_k2wiz_GNB_2183 a_1 k2wiz_GNB_919" target="_self">로그인
+							<li class="li_login"><a href="/member/login" id="login_menu"
+									class="login_menu" aria-current="page" >로그인
 									</a></li>
 
 
-							<li class="li_1_2183 li_1 have _1st _even eQ01 _useChildDiv haveOpen">
+							<li class="li_1_2183 li_1 have _1st _even eQ01 _useChildDiv haveOpen" sec:authorize="hasAnyAuthority('ROLE_STUDENT')">
 								<a href="/cse/2189/subview.do" id="top_k2wiz_GNB_2183"
 									class="top_k2wiz_GNB_2183 a_1 k2wiz_GNB_919" target="_self">계정관리
 								</a>
@@ -62,30 +65,22 @@
 								<div class="top_div_2184 div_2 _childDiv">
 									<div class="div_2_inner">
 										<ul class="top_k2wiz_GNB_ul_2184 _wizOdr ul_2 count4">
-											<li class="li_2_2194 li_2 _1st _even"><a href="/cse/2226/subview.do"
+											<li class="li_2_2194 li_2 _1st _even"><a href="/member/login"
 													id="top_k2wiz_GNB_2194"
-													class="top_k2wiz_GNB_2194 a_2 k2wiz_GNB_2184" target="_self">솔직히
-													말하자면 </a></li>
+													class="top_k2wiz_GNB_2194 a_2 k2wiz_GNB_2184" target="_self">JAVA </a></li>
 											<li class="li_2_2752 li_2 _odd _2nd"><a href="/cse/2195/subview.do"
 													id="top_k2wiz_GNB_2752"
-													class="top_k2wiz_GNB_2752 a_2 k2wiz_GNB_2184" target="_self">메뉴가
-													너무 많아 </a></li>
+													class="top_k2wiz_GNB_2752 a_2 k2wiz_GNB_2184" target="_self">C , C++, C# </a></li>
 											<li class="li_2_2197 li_2 _even _3rd"><a href="/cse/2197/subview.do"
 													id="top_k2wiz_GNB_2197"
-													class="top_k2wiz_GNB_2197 a_2 k2wiz_GNB_2184" target="_self">교수님이
-													고작 나한테 </a></li>
+													class="top_k2wiz_GNB_2197 a_2 k2wiz_GNB_2184" target="_self">Python </a></li>
 											<li class="li_2_2199 li_2 _odd _4th"><a href="/cse/2199/subview.do"
 													id="top_k2wiz_GNB_2199"
-													class="top_k2wiz_GNB_2199 a_2 k2wiz_GNB_2184" target="_self">이렇게
-													많은걸 원하지 않았을껄? </a></li>
+													class="top_k2wiz_GNB_2199 a_2 k2wiz_GNB_2184" target="_self">Mobile </a></li>
 											<li class="li_2_2204 li_2 _even_4th"><a href="/cse/2204/subview.do"
 													id="top_k2wiz_GNB_2204"
 													class="top_k2wiz_GNB_2204 a_2 k2wiz_GNB_2185" target="_self">
-													혹시 고작 저한테 그런 기대를 </a></li>
-											<li class="li_2_2204 li_2 _odd_6th"><a href="/cse/2204/subview.do"
-													id="top_k2wiz_GNB_2204"
-													class="top_k2wiz_GNB_2204 a_2 k2wiz_GNB_2185" target="_self">
-													하셨다면 아직 절 모르세요.. </a></li>
+													기술서 </a></li>
 										</ul>
 									</div>
 									<span class="navGab"></span>
@@ -94,7 +89,6 @@
 							<li class="li_1_2185 li_1 have _even _3rd eQ03 _useChildDiv">
 								<a href="/cse/2201/subview.do" id="top_k2wiz_GNB_2185"
 									class="top_k2wiz_GNB_2185 a_1 k2wiz_GNB_919" target="_self">2022
-									<input type="hidden" id="top_menuTitle_2185" value="취업정보">
 								</a>
 								<div class="top_div_2185 div_2 _childDiv">
 									<div class="div_2_inner">
@@ -102,27 +96,23 @@
 											<li class="li_2_2201 li_2 _1st _even"><a href="/cse/2201/subview.do"
 													id="top_k2wiz_GNB_2201"
 													class="top_k2wiz_GNB_2201 a_2 k2wiz_GNB_2185" target="_self">
-													그래서 여기에 역대 캡스톤을 보여주는어떨까 </a></li>
+													JAVA </a></li>
 											<li class="li_2_2203 li_2 _odd _2nd"><a href="/cse/2203/subview.do"
 													id="top_k2wiz_GNB_2203"
 													class="top_k2wiz_GNB_2203 a_2 k2wiz_GNB_2185" target="_self">
-													교수님이 원하는거 이거 맞지? </a></li>
+													C , C++ , C# </a></li>
 											<li class="li_2_2204 li_2 _last _even _3rd"><a href="/cse/2204/subview.do"
 													id="top_k2wiz_GNB_2204"
 													class="top_k2wiz_GNB_2204 a_2 k2wiz_GNB_2185" target="_self">
-													굴러다니는 싹바가지 텍스트는 </a></li>
+													Python </a></li>
 											<li class="li_2_2204 li_2 _odd_4th"><a href="/cse/2204/subview.do"
 													id="top_k2wiz_GNB_2204"
 													class="top_k2wiz_GNB_2204 a_2 k2wiz_GNB_2185" target="_self">
-													디비 연결 후 삭제 하심 됩니당~ </a></li>
+													Mobile </a></li>
 											<li class="li_2_2204 li_2 _even_4th"><a href="/cse/2204/subview.do"
 													id="top_k2wiz_GNB_2204"
 													class="top_k2wiz_GNB_2204 a_2 k2wiz_GNB_2185" target="_self">
-													하다가 중간에 생각 났는데 주제를 6개로 </a></li>
-											<li class="li_2_2204 li_2 _odd_6th"><a href="/cse/2204/subview.do"
-													id="top_k2wiz_GNB_2204"
-													class="top_k2wiz_GNB_2204 a_2 k2wiz_GNB_2185" target="_self">
-													정해버리자 그리고 년도별 주제별로 묶는거야~ </a></li>
+													기술서 </a></li>
 										</ul>
 									</div>
 									<span class="navGab"></span>
@@ -141,7 +131,7 @@
 			<div class="head_util">
 				<ul>
 					<li class="btn_search">
-						<button type="button" class="openSearch" onclick="onSearch()">통합검색</button>
+						<button type="button" class="openSearch" >통합검색</button>
 						<div class="wrap_search" id="wrap_search">
 							<div class="container">
 								<h3>통합검색</h3>
@@ -174,8 +164,8 @@
 					</li>
 				</ul>
 			</div>
-			<script src="./js/global.js"></script>
-			<script src="./js/nav_single.js"></script>
+			<script src="/js/global.js"></script>
+			<script src="/js/nav_single.js"></script>
 		</div>
 		
 	</div>

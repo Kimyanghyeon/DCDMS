@@ -289,6 +289,18 @@ input:is([type="hidden"], [type="image"], [type="file"]) {
 	height: 100%;
 }
 
+#login_menu{
+/*부모 속성 무시   */
+	border-bottom: 1px solid #DDD;
+	font-size: 18px;
+	padding: 12px 10px 12px 20px;
+	background: #DDD;
+	color: #222;
+	border-top: 1px solid rgba(255,255,255,0.5);
+	position: relative;
+	font-family: 'IBMPlexSansKR-Medium';
+}
+
 .head_navi nav .div_1 {
 	box-shadow: 0px -10px 35px #888;
 	position: relative;

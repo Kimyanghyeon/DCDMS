@@ -2,14 +2,76 @@
 <html lang="en" 
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}">
+      layout:decorate="~{/layouts/layout1}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main_css.css">
+    <title></title>
+</head>
+<body>
+    <div class="main" layout:fragment="content">
 
-    <div layout:fragment="content">
         <div class="wrap_sub_visual">
-            <div class="container">
-              <p class="visual_intro"><strong>교과과정</strong><span>창의와 혁신으로 미래 고등직업교육을 선도하는 대학</span></p>
+            <div class="mainContainer">
+                <p class="visual_intro">
+                    <strong>캡스톤 디자인</strong>
+                    <span>창의와 혁신으로 미래 고등직업교육을 선도하는 대학</span>
+                </p>
             </div>
-          </div>
-    </div> 
 
+            <div class="wrap_page_func">
+                <div class="home"><a href="/">홈으로</a></div>
+            </div>
+        </div>
+
+        
+
+        <div class="wrap_contents">
+            <div class="page_title">
+                <div><img class="before" src="/img/bul_h1.png" alt="이미지"></div>
+                <h1>2022년 캡스톤 디자인 성과</h1>
+                <P>현재 n개의 프로젝트가 진행 중입니다.</P>
+                <hr class="page_title_end">
+            </div>
+
+            <div class="contents">
+                <li>
+                    <div class="box">
+                        <div class="shadow">
+                            <a href="/bbs/cse/108/71019/artclView.do" >
+                                <div class="thumb">
+                                    <img src="/sites/cse/atchmnfl/bbs/108/thumbnail/temp_1656982904760100.jpg" alt="2022년도 학과평가 2위 대표이미지" >
+                                </div>
+                            </a>
+                            <div class="info">
+                                <a href="/bbs/cse/108/71019/artclView.do">
+                                    <div class="title">
+                                        <strong>2022년도 학과평가 2위</strong>
+                                    </div>
+                                    <div class="desc">
+                                        <dl class="date">
+                                            <dt>작성일</dt>
+                                            <dd>2022.07.05.</dd>
+                                        </dl>
+                                        <dl class="etc">
+                                            <dt>작성자</dt>
+                                            <dd></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="/sites/cse/atchmnfl/bbs/108/thumbnail/temp_1656982904760100.jpg" class="view-more" data-fancybox="gallery" >
+                                    
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+          
+        </div>
+
+
+    </div>
+<body>
 </html>

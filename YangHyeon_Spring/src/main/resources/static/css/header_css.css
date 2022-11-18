@@ -111,7 +111,19 @@ input:is([type="hidden"], [type="image"], [type="file"]) {
 	display: flex;
 	padding: 0 15px;
 	align-items: center;
-	flex-wrap: wrap;}
+	flex-wrap: wrap;
+}
+
+.head_logo .goMain{
+	margin-left: 20px;
+	font-family: 'IBMPlexSansKR-Light';
+	font-size: 15px;
+	-webkit-font-smoothing: antialiased;
+	color: white;
+	border: 0 none;
+	text-decoration: none;
+	
+}
 
 .head_util{
 	display: flex;

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout1}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/boardForm_css.css">
+	<title></title>
+</head>
+<body>
+	<div class="boardForm" layout:fragment="content">
+		<div class="upload_title">
+			<img src="img/bul_h1.png" width="25px">
+			<h1>등록하기</h1>
+		</div>
+		<form role="form" method="post" enctype="multipart/form-data" class="input">
+			<input type="hidden">
+
+		 	<div class="input_group">
+            	<div class="input_group_title">
+                	<span class="input_group_title">프로젝트명</span>
+            	</div>
+            	<input type="text" th:field="" class="form-control" placeholder="프로젝트명을 입력해주세요">
+        	</div>
+
+        	<div class="input-group">
+        		<div class="input-group-prepend">
+        			<span class="input_group_detail">프로젝트 설명</span>
+        		</div>
+            	<textarea class="form_control" aria-label="With textarea" ></textarea>
+            </div>
+
+            <div>
+            	<div class="form-group">
+                	<div class="custom-file img-div">
+                    	<input type="file" class="custom-file-input" name="itemImgFile">
+                    	<label class="custom-file-label" th:text=""></label>
+                	</div>
+            	</div>
+        	</div>
+
+        	<div>
+            	<button  type="submit" class="upLoadSubmit">등록</button>
+        	</div>
+
+		</form>
+	</div>
+</body>
+</html>

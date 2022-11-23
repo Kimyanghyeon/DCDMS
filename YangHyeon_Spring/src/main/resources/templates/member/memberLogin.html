@@ -18,15 +18,15 @@
 		<form role="form" method="post" action="/member/login">
 			<div class="loginInput">
 				<div class="_inputArea">
-					<input title="아이디" type="text" id="inputUserId" name="inputUserId" class="_input" placeholder="아이디">
+					<input title="아이디" type="text" id="inputUserId" name="id" class="_input" placeholder="아이디">
 				</div>
 				
 				<div class="_inputArea">
-					<input title="비밀번호" type="password" id="inputUserPwd" name="inputUserPwd" class="_input" placeholder="비밀번호" autocomplete="off">
+					<input title="비밀번호" type="password" id="inputUserPwd" name="pw" class="_input" placeholder="비밀번호" autocomplete="off">
 				</div>
 				
 				<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-				<button class="loginReset" onClick="location.href='/members/new'">비밀번호 재설정</button>
+				<button class="loginReset" onClick="location.href='/member/new'">회원가입</button>
 				
 				<button class="loginSubmit">로그인</button>
 				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">

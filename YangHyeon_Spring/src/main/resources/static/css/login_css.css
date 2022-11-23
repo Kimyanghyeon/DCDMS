@@ -72,7 +72,7 @@ input{
     margin-left: 10px;
 }
 
-.loginReset {
+.loginReset, .joinSubmit {
 	width: 100px;
     color: #FFF !important;
     background: #003366;
@@ -87,7 +87,7 @@ input{
 
 }
 
-.loginReset:hover , .loginSubmit:hover{
+.loginReset:hover , .loginSubmit:hover, .joinSubmit:hover{
     background: #666 url("./icon/pattern_12.png");
 }
 

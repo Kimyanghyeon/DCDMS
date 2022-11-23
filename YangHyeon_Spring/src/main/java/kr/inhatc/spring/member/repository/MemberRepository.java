@@ -6,6 +6,6 @@ import kr.inhatc.spring.member.entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-	Member findByPw(String pw);
+	Member findByEmail(String email);
 
 }// end of interface

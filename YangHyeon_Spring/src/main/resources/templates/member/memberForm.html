@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout1}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/login_css.css">
+	<title></title>
+</head>
+<body>
+	<div class="login" layout:fragment="content">
+		<div class="login_title">
+			<img src="/img/bul_h1.png" width="20px">
+			<h1>정보 등록</h1>
+		</div>
+		
+		<form role="form" method="post" action="/member/new" th:object="${memberFormDto}">
+			<div class="loginInput">
+				<div class="_inputArea">
+					<input title="아이디" th:field="*{id}" type="text" id="inputUserId" name="inputUserId" class="_input" placeholder="학번">
+					<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="fieldError">Incorrect data</p>
+				</div>
+				<div class="_inputArea">
+					<input title="비밀번호" th:field="*{pw}" type="password" id="inputUserPwd" name="inputUserPwd" class="_input" placeholder="비밀번호" autocomplete="off">
+					<p th:if="${#fields.hasErrors('pw')}" th:errors="*{pw}" class="fieldError">Incorrect data</p>
+				</div>
+				
+				<div class="_inputArea">
+					<input type="email" th:field="*{email}" class="form-control" placeholder="이메일">
+					<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
+				</div>
+
+				<div class="_inputArea">
+					<input title="이름" th:field="*{name}" type="text" id="inputUserName" name="inputUserName" class="_input" placeholder="이름" autocomplete="off">
+					<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
+				</div>
+
+				<div class="_inputArea">
+					<input title="반" th:field="*{grade}" type="text" id="inputUserGrade" name="inputUserGrade" class="_input" placeholder="반" autocomplete="off">
+					<p th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}" class="fieldError">Incorrect data</p>
+				</div>
+				<button type="submit" class="joinSubmit">등록</button>
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+			</div>
+		</form>
+			
+
+	</div>
+</body>
+</html>

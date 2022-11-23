@@ -26,14 +26,17 @@ public class Member {
 
 	@Id
 	@Column(name = "member_id")
-	private Long Id; // 아이디(학번)
+	private String Id; // 아이디(학번)
 
 	@Column(unique = true)
 	private String pw; // 비밀번호
 
+	@Column(unique = true)
+	private String email;
+
 	private String name; // 이름
 
-	private char grade; // 반
+	private String grade; // 반
 
 	@Enumerated(EnumType.STRING)
 	private Role role; // 역할 - 교수와 학생을 구분
@@ -43,10 +46,12 @@ public class Member {
 		Member member = new Member();
 		member.setId(memberFormDto.getId());
 		member.setName(memberFormDto.getName());
+		member.setEmail(memberFormDto.getEmail());
 		member.setGrade(memberFormDto.getGrade());
 		member.setRole(Role.STUDENT); // 기본값 : 학생
 		String password = passwordEncoder.encode(memberFormDto.getPw());
-		return null;
+		member.setPw(password);
+		return member;
 
 	}// end of createMember
 

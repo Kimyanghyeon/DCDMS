@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import kr.inhatc.spring.member.constant.Role;
 import kr.inhatc.spring.member.dto.MemberFormDto;
+import kr.inhatc.spring.utils.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,11 +23,11 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class Member extends BaseEntity {
 
 	@Id
-	@Column(name = "member_id")
-	private String Id; // 아이디(학번)
+	@Column(name = "member_id", unique = true)
+	private String id; // 아이디(학번)
 
 	@Column(unique = true)
 	private String pw; // 비밀번호

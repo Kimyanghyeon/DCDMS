@@ -16,8 +16,9 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-		http.formLogin().loginPage("/member/login").defaultSuccessUrl("/").failureUrl("/member/login/error").and()
-				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")).logoutSuccessUrl("/");
+		http.formLogin().loginPage("/member/login").defaultSuccessUrl("/").usernameParameter("id")
+				.failureUrl("/member/login/error").and().logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")).logoutSuccessUrl("/");
 
 		return http.build();
 

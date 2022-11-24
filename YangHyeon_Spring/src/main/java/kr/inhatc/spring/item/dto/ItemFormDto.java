@@ -1,9 +1,15 @@
 package kr.inhatc.spring.item.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 
+import org.modelmapper.ModelMapper;
+
+import kr.inhatc.spring.item.entity.Item;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -25,7 +31,18 @@ public class ItemFormDto {
 	@Column(nullable = false)
 	private String itemContents; // 내용
 
-	public void updateItem(ItemFormDto itemFormDto) {
-	}// end of updateItem
+	private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
 
-}// end of calss
+	private List<Long> itemImgIds = new ArrayList<>();
+
+	private static ModelMapper modelMapper = new ModelMapper();
+
+	public Item createItem() {
+		return modelMapper.map(this, Item.class);
+	}// end of create
+
+	public static ItemFormDto of(Item item) {
+		return modelMapper.map(item, ItemFormDto.class);
+	}// end of ItemFormDto
+
+}// end of class

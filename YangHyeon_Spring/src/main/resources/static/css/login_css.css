@@ -47,6 +47,11 @@ input{
     margin-top:150px;
 }
 
+.input_group .input_group_prepend{
+	margin:5px;
+	 
+}
+
 .loginInput{
     text-align:center;
     display:block;

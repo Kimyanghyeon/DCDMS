@@ -11,10 +11,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ItemController {
 
-	@GetMapping("/admin/item/new")
+	@GetMapping("/student/item/new")
 	public String itemForm(Model model) {
 		model.addAttribute("itemFormDto", new ItemFormDto());
-		return "/item/itemForm";
-	}
+		return "item/itemForm";
+	}// end of itemFOrm
 
 }// end of class

@@ -2,6 +2,7 @@ package kr.inhatc.spring.item.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class Item extends BaseEntity {
 	@Column(name = "item_id")
 	private Long id; // 컨텐츠 코드
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
 	private Member member; // 작성자
 

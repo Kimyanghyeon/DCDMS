@@ -2,6 +2,8 @@ package kr.inhatc.spring.item.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import kr.inhatc.spring.item.constant.LanguageType;
 import kr.inhatc.spring.member.entity.Member;
 import kr.inhatc.spring.utils.entity.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -38,8 +41,8 @@ public class Item extends BaseEntity {
 	@Column(nullable = false)
 	private String itemTitle; // 제목
 
-	@Column(nullable = false)
-	private String itemField; // 분야
+	@Enumerated(EnumType.STRING)
+	private LanguageType itemField; // 분야
 
 	@Lob
 	@Column(nullable = false)

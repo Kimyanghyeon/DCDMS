@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.modelmapper.ModelMapper;
 
+import kr.inhatc.spring.item.constant.LanguageType;
 import kr.inhatc.spring.item.entity.Item;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +26,7 @@ public class ItemFormDto {
 	private String itemTitle; // 제목
 
 	@NotBlank(message = "분야는 필수 입력입니다.")
-	private String itemField; // 분야
+	private LanguageType itemField; // 분야
 
 	@Lob
 	@Column(nullable = false)

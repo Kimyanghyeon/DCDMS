@@ -28,7 +28,6 @@ class ItemRepositoryTest {
 	public void createItemTest() {
 		Item item = new Item();
 		item.setItemTitle("테스트 상품");
-		item.setItemField("테스트 분야 ");
 		item.setItemContents("테스트 상품 상세 설명");
 		item.setRegTime(LocalDateTime.now());
 		item.setUpdateTime(LocalDateTime.now());
@@ -43,7 +42,6 @@ class ItemRepositoryTest {
 			Item item = new Item();
 			item.setMember(null);
 			item.setItemTitle("테스트 제목" + i);
-			item.setItemField("테스트 분야" + i);
 			item.setItemContents("테스트 내용" + i);
 			item.setRegTime(LocalDateTime.now());
 			item.setUpdateTime(LocalDateTime.now());

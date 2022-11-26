@@ -17,7 +17,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http.formLogin().loginPage("/member/login").defaultSuccessUrl("/").usernameParameter("id")
-				.failureUrl("/member/login/error").and().logout()
+				.passwordParameter("pw").failureUrl("/member/login/error").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")).logoutSuccessUrl("/");
 
 		return http.build();

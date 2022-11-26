@@ -16,7 +16,7 @@ import lombok.ToString;
 public class MemberFormDto {
 
 	@NotBlank(message = "아이디는 필수 입력입니다.")
-	@Length(min = 8, max = 12, message = "아이디는 8자 이상 12자 이하로 입력하세요.")
+	@Length(min = 3, max = 12, message = "아이디는 3자 이상 12자 이하로 입력하세요.")
 	private String id; // 아이디(학번)
 
 	@NotEmpty(message = "비밀번호는 필수 항목 입니다.")

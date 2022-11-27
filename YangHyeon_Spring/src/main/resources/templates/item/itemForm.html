@@ -50,7 +50,7 @@
 			<img src="/img/bul_h1.png" width="20px">
 			<h1>등록하기</h1>
 		</div>
-		<form role="form" method="post" enctype="multipart/form-data" class="input" th:object="${itemFormDto}" >
+		<form role="form" method="post" action="/student/item/new" enctype="multipart/form-data" class="input" th:object="${itemFormDto}" >
 		
 			<input type="hidden" th:field="*{id}">
 		
@@ -92,9 +92,9 @@
 			</div>
 
         	<div>
-            	<button th:formaction="@{/student/item/new}" type="submit" class="upLoadSubmit">등록</button>
+            	<button type="submit" class="upLoadSubmit">등록</button>
         	</div>
-			
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 		</form>
 	</div>
 </body>

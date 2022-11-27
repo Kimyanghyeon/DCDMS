@@ -18,15 +18,18 @@ import kr.inhatc.spring.item.constant.LanguageType;
 import kr.inhatc.spring.item.dto.ItemFormDto;
 import kr.inhatc.spring.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class ItemController {
 
 	private final ItemService itemService;
 
 	@GetMapping("/student/item/new")
 	public String itemForm(Model model) {
+		log.info("==========================================> 불러오기 ");
 		model.addAttribute("itemFormDto", new ItemFormDto());
 		return "item/itemForm";
 	}// end of itemFOrm
@@ -39,13 +42,8 @@ public class ItemController {
 	@PostMapping("/student/item/new")
 	public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult, Model model,
 			@RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {
-
+		log.info("==========================================> 등록하기 ");
 		if (bindingResult.hasErrors()) {
-			return "item/itemForm";
-		} // end of if
-
-		if (itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null) {
-			model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력값 입니다.");
 			return "item/itemForm";
 		} // end of if
 

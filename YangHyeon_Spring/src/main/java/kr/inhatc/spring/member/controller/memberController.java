@@ -29,6 +29,7 @@ public class memberController {
 
 	@GetMapping("/login")
 	public String login() {
+
 		return "member/memberLogin";
 	}// end of login
 

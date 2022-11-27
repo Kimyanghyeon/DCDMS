@@ -40,7 +40,6 @@ class ItemRepositoryTest {
 	public void createItemList() {
 		for (int i = 1; i <= 10; i++) {
 			Item item = new Item();
-			item.setMember(null);
 			item.setItemTitle("테스트 제목" + i);
 			item.setItemContents("테스트 내용" + i);
 			item.setRegTime(LocalDateTime.now());

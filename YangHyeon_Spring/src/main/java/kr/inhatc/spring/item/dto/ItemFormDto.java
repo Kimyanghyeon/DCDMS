@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.modelmapper.ModelMapper;
 
 import kr.inhatc.spring.item.constant.LanguageType;
 import kr.inhatc.spring.item.entity.Item;
+import kr.inhatc.spring.member.entity.Member;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -22,10 +27,14 @@ public class ItemFormDto {
 
 	private Long id; // 컨텐츠 코드
 
-	@NotBlank(message = "제목은 필수 입력입니다.")
-	private String itemTitle; // 제목
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_id")
+	private String member; // 작성자
 
-	@NotBlank(message = "분야는 필수 입력입니다.")
+	@NotBlank(message = "제목은 필수 입력입니다.")
+	private Member itemTitle; // 제목
+
+	@NotNull(message = "분야는 필수 입력입니다.")
 	private LanguageType itemField; // 분야
 
 	@Lob

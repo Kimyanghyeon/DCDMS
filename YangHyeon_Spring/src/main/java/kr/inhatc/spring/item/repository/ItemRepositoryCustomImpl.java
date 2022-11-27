@@ -24,16 +24,15 @@ import kr.inhatc.spring.item.entity.Item;
 
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
-	private JPAQueryFactory queryFactory;
+	private JPAQueryFactory queryFactory; // 동적으로 쿼리 생성을 위해 사용
 
 	public ItemRepositoryCustomImpl(EntityManager em) {
-		this.queryFactory = new JPAQueryFactory(em);
+		this.queryFactory = new JPAQueryFactory(em); // 초기화
 	}// end of ItemRepositoryCustomImpl
 
 	private BooleanExpression searchLanguageTypeEq(LanguageType searchLanguageType) {
 		return searchLanguageType == null ? null : item.itemField.eq(searchLanguageType);
-
-	}// end of searchLanguageTypeEq
+	}// end of searchLanguageType
 
 	private BooleanExpression regDateAfter(String searchDateType) {
 		LocalDateTime dateTime = LocalDateTime.now();
@@ -51,15 +50,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 		} // end of else if regDateAfter
 
 		return item.regTime.after(dateTime);
-	}// end of
+	}// end of regDateAfter
 
-	/**
-	 * 상품 또는 상품 등록자의 아이디에 검색어를 포함하고 있는 상품을 조회
-	 * 
-	 * @param searchBy    검색 종류(상품 / 상품 등록자)
-	 * @param searchQuery 검색어
-	 * @return
-	 */
 	private BooleanExpression searchByLike(String searchBy, String searchQuery) {
 		if (StringUtils.equals("itemNm", searchBy)) {
 			return item.itemTitle.like("%" + searchQuery + "%");
@@ -83,7 +75,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 				.fetch();
 
 		return new PageImpl<>(content, pageable, content.size());
-	}// end of getStudentItemPage
+	}// end of get StudentItem
 
 	private BooleanExpression itemTitleLike(String searchQuery) {
 		return StringUtils.isEmpty(searchQuery) ? null : item.itemTitle.like("%" + searchQuery + "%");
@@ -94,13 +86,12 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 		List<MainItemDto> results = queryFactory.select(
 				// @QueryProjection을 사용하면 DTO로 바로 조회 가능
 				// 엔티티 조회후 DTO로 변환하는 과정을 줄일 수 있음
-				new QMainItemDto(item.id, item.member, item.itemTitle, item.itemField, item.itemContents,
-						itemImg.imgUrl))
+				new QMainItemDto(item.id, item.itemTitle, item.itemField, item.itemContents, itemImg.imgUrl))
 				.from(itemImg).join(itemImg.item, item) // itemImg와 item을 내부 조인 수행함
 				.where(itemImg.repImgYn.eq("Y")) // 상품 이미지의 경우엔 대표 상품만 불러옴
 				.where(itemTitleLike(itemSearchDto.getSearchQuery())).orderBy(item.id.desc())
 				.offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
 		return new PageImpl<>(results, pageable, results.size());
-	}// end of getMainItemPage
+	}// end of getMain
 
 }// end of class

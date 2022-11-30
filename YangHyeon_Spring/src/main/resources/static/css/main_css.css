@@ -125,36 +125,67 @@ a:any-link {
 
 }
 
-.repre_contents{
-	display: flex;
+th, td {
+	padding: 5px;
 }
 
-.box{
+.table{
+	/*border: 1px solid black;*/
+	border-spacing: 0px;
+	width: 800px;
+	margin: 10px;
+	margin-left:auto; 
+    margin-right:auto;
+	
+}
+
+.table_title{
+	background: rgba(2,41,104,0.7);
+}
+
+.table_title td{
+	font-size:12px;
+	color: white;
+	height: 20px;
+}
+
+
+/*검색 */
+.searchForm{
+	margin: 10px;
+	height: 40px;
+	border-bottom: 2px solid #000;
+}
+
+
+.form_control_date_List{
+	height: 40px;
+	width: 100px;
+	height: 40px;
+	appearance: none;
 	text-align: center;
-	display: inline-block;
-	border: 1px solid ;
-	width: 300px;
-	margin-left:10px;
+	background: #FFF url(/img/bul_select.png) no-repeat right center;
+	padding: 0 40px 0 10px;
+	border: none;
+}
+
+.form_control{
+	height: 30px;
+	width: 400px;
+	border: none;
+}
+
+.board_search{
+	cursor: pointer;
+	width: 80px;
+	height: 40px;
+	color: #FFF;
+	background: #5e6263;
+	border-color: #5e6263;
+	appearance: none;
 }
 
 
-.contents .repre_img img{
-
-	object-fit: contain;
-	width: 100%;
-	height: 163.6px;
-	background: #fafaff;
-	text-align: center;
-}
-
-.contents .info .title{
-	font-family: 'IBMPlexSansKR-Medium';
-	font-size: 15px;
-}
-
-.contents .info .desc .date,.name{
-	font-size: 10px;
-}
 
 /*제목  */
 
@@ -175,6 +206,45 @@ a:any-link {
 .page_title_end {
 	margin: 10px;
 	border: solid 1px black;
+}
+
+/*page*/
+.page_fnc{
+	position: absolute;
+	top: 315px;
+	left:50%;
+}
+
+.page_list li{
+	float: left;
+}
+
+.page_item_right{
+	font-size: 0;
+	text-indent: -5000px;
+	background-image: url(/img/paging_right.png);
+	background-repeat: no-repeat;
+	
+}
+
+.page_item_left{
+	font-size: 0;
+	text-indent: -5000px;
+	background-image: url(/img/paging_left.png);
+	background-repeat: no-repeat;
+}
+
+.page_item_num, .page_item_left, .page_item_right{
+	background-color: #f0f0f0;
+	color: #333;
+	width: 36px;
+	height: 36px;
+	line-height: 36px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #cdcdcd;
+	text-align: center;
+	margin: 0 1px;
 }
 
 

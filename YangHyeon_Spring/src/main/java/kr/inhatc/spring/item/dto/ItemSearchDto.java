@@ -10,7 +10,7 @@ public class ItemSearchDto {
 
 	private String searchDateType;
 
-	private LanguageType languageType; // 타입별 조회
+	private LanguageType searcLanguageType; // 타입별 조회
 
 	private String searchBy; // 조회유형
 

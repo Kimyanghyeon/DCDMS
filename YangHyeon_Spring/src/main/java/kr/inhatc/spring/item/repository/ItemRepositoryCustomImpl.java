@@ -1,7 +1,6 @@
 package kr.inhatc.spring.item.repository;
 
 import static kr.inhatc.spring.item.entity.QItem.item;
-import static kr.inhatc.spring.item.entity.QItemImg.itemImg;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,12 +13,11 @@ import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import kr.inhatc.spring.item.constant.LanguageType;
 import kr.inhatc.spring.item.dto.ItemSearchDto;
-import kr.inhatc.spring.item.dto.MainItemDto;
-import kr.inhatc.spring.item.dto.QMainItemDto;
 import kr.inhatc.spring.item.entity.Item;
 
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
@@ -61,11 +59,15 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 		return null;
 	}// end of searchByLike
 
+	private BooleanExpression itemTitleLike(String searchQuery) {
+		return StringUtils.isEmpty(searchQuery) ? null : item.itemTitle.like("%" + searchQuery + "%");
+	}// end of itemTitleLike
+
 	@Override
-	public Page<Item> getStudentItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+	public Page<Item> getStudentItemList(ItemSearchDto itemSearchDto, Pageable pageable) {
 		List<Item> content = queryFactory.selectFrom(item).where(
 				// 상품 판매 상태
-				searchLanguageTypeEq(itemSearchDto.getLanguageType()),
+				searchLanguageTypeEq(itemSearchDto.getSearcLanguageType()),
 				// 기간
 				regDateAfter(itemSearchDto.getSearchDateType()),
 				// 상품명 또는 등록자
@@ -74,24 +76,13 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 				.limit(pageable.getPageSize()) // 한 번에 가져올 최대 개수
 				.fetch();
 
-		return new PageImpl<>(content, pageable, content.size());
+		long total = queryFactory.select(Wildcard.count).from(item)
+				.where(regDateAfter(itemSearchDto.getSearchDateType()),
+						searchLanguageTypeEq(itemSearchDto.getSearcLanguageType()),
+						searchByLike(itemSearchDto.getSearchBy(), itemSearchDto.getSearchQuery()))
+				.fetchOne();
+
+		return new PageImpl<>(content, pageable, total);
 	}// end of get StudentItem
-
-	private BooleanExpression itemTitleLike(String searchQuery) {
-		return StringUtils.isEmpty(searchQuery) ? null : item.itemTitle.like("%" + searchQuery + "%");
-	}// end of itemNmLike
-
-	@Override
-	public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
-		List<MainItemDto> results = queryFactory.select(
-				// @QueryProjection을 사용하면 DTO로 바로 조회 가능
-				// 엔티티 조회후 DTO로 변환하는 과정을 줄일 수 있음
-				new QMainItemDto(item.id, item.itemTitle, item.itemField, item.itemContents, itemImg.imgUrl))
-				.from(itemImg).join(itemImg.item, item) // itemImg와 item을 내부 조인 수행함
-				.where(itemImg.repImgYn.eq("Y")) // 상품 이미지의 경우엔 대표 상품만 불러옴
-				.where(itemTitleLike(itemSearchDto.getSearchQuery())).orderBy(item.id.desc())
-				.offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
-		return new PageImpl<>(results, pageable, results.size());
-	}// end of getMain
 
 }// end of class

@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.inhatc.spring.item.dto.ItemFormDto;
 import kr.inhatc.spring.item.dto.ItemSearchDto;
-import kr.inhatc.spring.item.dto.MainItemDto;
 import kr.inhatc.spring.item.entity.Item;
 import kr.inhatc.spring.item.entity.ItemImg;
 import kr.inhatc.spring.item.repository.ItemImgRepository;
@@ -50,9 +49,8 @@ public class ItemService {
 
 	}// end of saveItem
 
-	@Transactional(readOnly = true)
-	public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
-		return itemRepository.getMainItemPage(itemSearchDto, pageable);
-	}// end of getMainItemPage
+	public Page<Item> getStudentItemList(ItemSearchDto itemSearchDto, Pageable pageable) {
+		return itemRepository.getStudentItemList(itemSearchDto, pageable);
+	}// end of getStudentItemList
 
 }// end of class

@@ -26,7 +26,7 @@
             var searchBy = $("#searchBy").val();
             var searchQuery = $("#searchQuery").val();
 
-            location.href="/admin/items/" + page + "?searchDateType=" + searchDateType
+            location.href="/items/" + page + "?searchDateType=" + searchDateType
             + "&searchLanguageType=" + searchLanguageType
             + "&searchBy=" + searchBy
             + "&searchQuery=" + searchQuery;
@@ -84,7 +84,7 @@
             <tr th:each="item, status: ${items.getContent()}">
                 <td th:text="${item.id}"></td>
                 <td>
-                    <a th:href="'/admin/item/'+${item.id}" th:text="${item.itemTitle}"></a>
+                    <a th:href="'/item/'+${item.id}" th:text="${item.itemTitle}"></a>
                 </td>
                 <!-- 경로 찾아라 T(kr.inhatc.spring.item.constant.LanguageType). -->
                 <!--  

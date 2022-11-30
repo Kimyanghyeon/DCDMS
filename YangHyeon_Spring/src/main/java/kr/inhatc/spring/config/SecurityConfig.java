@@ -20,6 +20,8 @@ public class SecurityConfig {
 				.passwordParameter("pw").failureUrl("/member/login/error").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")).logoutSuccessUrl("/");
 
+		http.headers().frameOptions().disable();
+
 		return http.build();
 
 	}// end of filterChain

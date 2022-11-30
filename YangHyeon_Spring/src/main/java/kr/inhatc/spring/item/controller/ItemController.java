@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -55,5 +56,12 @@ public class ItemController {
 
 		return "redirect:/";
 	}// end of item new
+
+	@GetMapping(value = "/item/{itemId}")
+	public String itemDtl(Model model, @PathVariable("itemId") Long itemId) {
+		ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+		model.addAttribute("item", itemFormDto);
+		return "item/itemDtl";
+	}// end of itemDtl
 
 }// end of class

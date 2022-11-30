@@ -16,7 +16,6 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
-import kr.inhatc.spring.item.constant.LanguageType;
 import kr.inhatc.spring.item.dto.ItemSearchDto;
 import kr.inhatc.spring.item.entity.Item;
 
@@ -27,10 +26,6 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 	public ItemRepositoryCustomImpl(EntityManager em) {
 		this.queryFactory = new JPAQueryFactory(em); // 초기화
 	}// end of ItemRepositoryCustomImpl
-
-	private BooleanExpression searchLanguageTypeEq(LanguageType searchLanguageType) {
-		return searchLanguageType == null ? null : item.itemField.eq(searchLanguageType);
-	}// end of searchLanguageType
 
 	private BooleanExpression regDateAfter(String searchDateType) {
 		LocalDateTime dateTime = LocalDateTime.now();
@@ -51,7 +46,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 	}// end of regDateAfter
 
 	private BooleanExpression searchByLike(String searchBy, String searchQuery) {
-		if (StringUtils.equals("itemNm", searchBy)) {
+		if (StringUtils.equals("itemTitle", searchBy)) {
 			return item.itemTitle.like("%" + searchQuery + "%");
 		} else if (StringUtils.equals("createBy", searchBy)) {
 			return item.createdBy.like("%" + searchQuery + "%");
@@ -59,15 +54,9 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 		return null;
 	}// end of searchByLike
 
-	private BooleanExpression itemTitleLike(String searchQuery) {
-		return StringUtils.isEmpty(searchQuery) ? null : item.itemTitle.like("%" + searchQuery + "%");
-	}// end of itemTitleLike
-
 	@Override
 	public Page<Item> getStudentItemList(ItemSearchDto itemSearchDto, Pageable pageable) {
 		List<Item> content = queryFactory.selectFrom(item).where(
-				// 상품 판매 상태
-				searchLanguageTypeEq(itemSearchDto.getSearcLanguageType()),
 				// 기간
 				regDateAfter(itemSearchDto.getSearchDateType()),
 				// 상품명 또는 등록자
@@ -78,7 +67,6 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
 		long total = queryFactory.select(Wildcard.count).from(item)
 				.where(regDateAfter(itemSearchDto.getSearchDateType()),
-						searchLanguageTypeEq(itemSearchDto.getSearcLanguageType()),
 						searchByLike(itemSearchDto.getSearchBy(), itemSearchDto.getSearchQuery()))
 				.fetchOne();
 

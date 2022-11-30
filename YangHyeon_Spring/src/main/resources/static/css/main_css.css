@@ -134,6 +134,7 @@ th, td {
 	border-spacing: 0px;
 	width: 800px;
 	margin: 10px;
+	margin-top:5px;
 	margin-left:auto; 
     margin-right:auto;
 	
@@ -152,16 +153,16 @@ th, td {
 
 /*검색 */
 .searchForm{
-	margin: 10px;
-	height: 40px;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 36px;
 	border-bottom: 2px solid #000;
 }
 
 
 .form_control_date_List{
-	height: 40px;
 	width: 100px;
-	height: 40px;
+	height: 35px;
 	appearance: none;
 	text-align: center;
 	background: #FFF url(/img/bul_select.png) no-repeat right center;
@@ -170,7 +171,7 @@ th, td {
 }
 
 .form_control{
-	height: 30px;
+	height: 34px;
 	width: 400px;
 	border: none;
 }
@@ -178,7 +179,7 @@ th, td {
 .board_search{
 	cursor: pointer;
 	width: 80px;
-	height: 40px;
+	height: 36px;
 	color: #FFF;
 	background: #5e6263;
 	border-color: #5e6263;
@@ -211,8 +212,8 @@ th, td {
 /*page*/
 .page_fnc{
 	position: absolute;
-	top: 315px;
-	left:50%;
+	top: 325px;
+	margin-left: 43%;
 }
 
 .page_list li{
@@ -220,31 +221,30 @@ th, td {
 }
 
 .page_item_right{
-	font-size: 0;
-	text-indent: -5000px;
 	background-image: url(/img/paging_right.png);
 	background-repeat: no-repeat;
+	background-size: cover;
 	
 }
 
 .page_item_left{
-	font-size: 0;
-	text-indent: -5000px;
 	background-image: url(/img/paging_left.png);
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .page_item_num, .page_item_left, .page_item_right{
 	background-color: #f0f0f0;
 	color: #333;
-	width: 36px;
-	height: 36px;
-	line-height: 36px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #cdcdcd;
 	text-align: center;
 	margin: 0 1px;
+	cursor: pointer;
 }
 
 

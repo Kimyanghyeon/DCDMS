@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import kr.inhatc.spring.member.constant.Grade;
 import kr.inhatc.spring.member.constant.Role;
 import kr.inhatc.spring.member.dto.MemberFormDto;
 import kr.inhatc.spring.utils.entity.BaseEntity;
@@ -29,7 +30,6 @@ public class Member extends BaseEntity {
 	@Column(name = "member_id", unique = true)
 	private String id; // 아이디(학번)
 
-	@Column(unique = true)
 	private String pw; // 비밀번호
 
 	@Column(unique = true)
@@ -37,7 +37,8 @@ public class Member extends BaseEntity {
 
 	private String name; // 이름
 
-	private String grade; // 반
+	@Enumerated(EnumType.STRING)
+	private Grade grade; // 반
 
 	@Enumerated(EnumType.STRING)
 	private Role role; // 역할 - 교수와 학생을 구분

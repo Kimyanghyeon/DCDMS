@@ -28,7 +28,7 @@ public class MainController {
 
 		log.info("검색 정보 : " + itemSearchDto);
 
-		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
 		Page<Item> items = itemService.getStudentItemList(itemSearchDto, pageable);
 		log.info("크기 : " + items.getSize());
 

@@ -3,9 +3,11 @@ package kr.inhatc.spring.member.dto;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
+import kr.inhatc.spring.member.constant.Grade;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -29,7 +31,7 @@ public class MemberFormDto {
 	@NotEmpty(message = "이름은 필수 항목 입니다.")
 	private String name; // 이름
 
-	@NotEmpty(message = "반은 필수 항목 입니다.")
-	private String grade; // 반
+	@NotNull(message = "반은 필수 항목 입니다.")
+	private Grade grade; // 반
 
 }// end of class

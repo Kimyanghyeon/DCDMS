@@ -25,11 +25,20 @@ html {
     position: relative;
     min-height: 100%;
     margin: 0;
+    overflow-y:scroll;
+    
     
 }
 body {
 	 min-height: 100%;
 }
+
+.content{
+ 	position: relative;
+ 	height: auto;
+ 	
+}
+
 .footer {
 	 position: absolute;
     left: 0;
@@ -41,9 +50,5 @@ body {
 }
 
 
-.content{
- 	position: relative;
- 	height: auto;
- 	
-}
+
 

@@ -15,7 +15,6 @@ import org.modelmapper.ModelMapper;
 
 import kr.inhatc.spring.item.constant.LanguageType;
 import kr.inhatc.spring.item.entity.Item;
-import kr.inhatc.spring.member.entity.Member;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -32,7 +31,7 @@ public class ItemFormDto {
 	private String member; // 작성자
 
 	@NotBlank(message = "제목은 필수 입력입니다.")
-	private Member itemTitle; // 제목
+	private String itemTitle; // 제목
 
 	@NotNull(message = "분야는 필수 입력입니다.")
 	private LanguageType itemField; // 분야

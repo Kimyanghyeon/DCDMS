@@ -103,6 +103,10 @@ input{
     font-family: 'IBMPlexSansKR-Medium';
 }
 
+.gradeRadio{
+	 display: inline-block;
+}
+
 
 
 
